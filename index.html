@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Safe Zone 4 Tech Girls is a non-profit community supporting girls across Arab countries through technology learning, mentorship, CV and LinkedIn improvement, edX study circles, and dedicated tracks in Cybersecurity, Data Analysis, AI, and Machine Learning." />
+  <title>Safe Zone 4 Tech Girls | Arab Girls in Tech Community</title>
+  <link rel="icon" href="assets/logo.png" />
+  <style>
+    :root {
+      --bg: #fff7fb;
+      --surface: #ffffff;
+      --surface-soft: #fbf5ff;
+      --purple-950: #241138;
+      --purple-900: #2f1850;
+      --purple-800: #4c1d95;
+      --purple-700: #6d28d9;
+      --purple-600: #7c3aed;
+      --purple-300: #c4b5fd;
+      --pink-600: #db2777;
+      --pink-500: #ec4899;
+      --pink-300: #f9a8d4;
+      --pink-100: #fce7f3;
+      --green: #16a34a;
+      --text: #251634;
+      --muted: #6d5d7d;
+      --line: rgba(109, 40, 217, .15);
+      --shadow: 0 24px 70px rgba(47, 24, 80, .16);
+      --shadow-soft: 0 14px 38px rgba(47, 24, 80, .10);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(236,72,153,.18), transparent 34rem),
+        radial-gradient(circle at 85% 8%, rgba(124,58,237,.18), transparent 34rem),
+        linear-gradient(180deg, #fff7fb 0%, #ffffff 42%, #fbf7ff 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button, input, textarea { font: inherit; }
+
+    .container { width: min(var(--max), calc(100% - 36px)); margin: 0 auto; }
+    .skip { position: absolute; left: -999px; top: 10px; background: var(--purple-900); color: #fff; padding: 10px 16px; border-radius: 999px; z-index: 100; }
+    .skip:focus { left: 12px; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 247, 251, .86);
+      border-bottom: 1px solid rgba(124,58,237,.10);
+      backdrop-filter: blur(18px);
+    }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 900; letter-spacing: -.03em; color: var(--purple-950); }
+    .brand img { width: 48px; height: 48px; border-radius: 16px; box-shadow: 0 10px 24px rgba(124,58,237,.2); }
+    .brand small { display: block; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .02em; }
+    .links { display: flex; align-items: center; gap: 18px; color: var(--purple-900); font-weight: 750; font-size: 14px; }
+    .links a { opacity: .88; }
+    .links a:hover { color: var(--pink-600); }
+    .menu-btn { display: none; border: 0; background: var(--surface); border-radius: 14px; padding: 10px 12px; color: var(--purple-900); box-shadow: var(--shadow-soft); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 20px;
+      font-weight: 850;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: #fff; background: linear-gradient(135deg, var(--purple-700), var(--pink-500)); box-shadow: 0 16px 32px rgba(124,58,237,.24); }
+    .btn-light { color: var(--purple-900); background: #fff; box-shadow: var(--shadow-soft); }
+    .btn-outline { color: var(--purple-800); background: rgba(255,255,255,.58); border: 1px solid rgba(124,58,237,.22); }
+
+    .hero { padding: 78px 0 42px; position: relative; overflow: hidden; }
+    .hero::before,
+    .hero::after { content: ""; position: absolute; border-radius: 999px; filter: blur(1px); opacity: .55; z-index: -1; }
+    .hero::before { width: 250px; height: 250px; background: rgba(236,72,153,.15); left: -90px; top: 140px; }
+    .hero::after { width: 330px; height: 330px; background: rgba(124,58,237,.15); right: -130px; bottom: -40px; }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 46px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 9px 14px; border: 1px solid rgba(124,58,237,.18); background: rgba(255,255,255,.68); color: var(--purple-800); border-radius: 999px; font-size: 13px; font-weight: 900; box-shadow: 0 10px 28px rgba(124,58,237,.08); }
+    .dot { width: 10px; height: 10px; border-radius: 999px; background: var(--green); box-shadow: 0 0 0 7px rgba(22, 163, 74, .12); }
+    h1 { margin: 22px 0 16px; font-size: clamp(44px, 7.2vw, 86px); line-height: .94; letter-spacing: -.075em; color: var(--purple-950); }
+    .gradient-text { background: linear-gradient(135deg, var(--purple-700), var(--pink-500)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero p { font-size: 19px; color: var(--muted); max-width: 670px; margin: 0 0 28px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-note { margin-top: 20px; color: var(--muted); font-size: 14px; }
+
+    .hero-card {
+      position: relative;
+      border-radius: 42px;
+      background: linear-gradient(145deg, rgba(255,255,255,.9), rgba(255,255,255,.62));
+      border: 1px solid rgba(124,58,237,.14);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      overflow: hidden;
+    }
+    .hero-card::before { content: ""; position: absolute; inset: -40% -35% auto auto; width: 320px; height: 320px; background: radial-gradient(circle, rgba(236,72,153,.24), transparent 65%); }
+    .logo-panel { position: relative; border-radius: 32px; overflow: hidden; background: #6031b4; box-shadow: inset 0 0 0 1px rgba(255,255,255,.25); }
+    .logo-panel img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+    .floating-card { position: absolute; right: 10px; bottom: 18px; background: rgba(255,255,255,.94); border: 1px solid rgba(124,58,237,.12); border-radius: 22px; padding: 14px 16px; box-shadow: 0 18px 40px rgba(47,24,80,.18); width: min(260px, calc(100% - 38px)); }
+    .floating-card strong { display:block; color: var(--purple-950); font-size: 14px; }
+    .floating-card span { color: var(--muted); font-size: 12px; display:block; margin-top:2px; }
+
+    .quick-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 34px; }
+    .stat { background: rgba(255,255,255,.78); border: 1px solid rgba(124,58,237,.12); border-radius: 22px; padding: 20px; box-shadow: 0 12px 28px rgba(47,24,80,.06); }
+    .stat b { display:block; color: var(--purple-900); font-size: 25px; line-height: 1; margin-bottom: 6px; }
+    .stat span { color: var(--muted); font-size: 13px; font-weight: 700; }
+
+    section { padding: 70px 0; }
+    .section-head { text-align: center; max-width: 780px; margin: 0 auto 34px; }
+    .section-kicker { text-transform: uppercase; letter-spacing: .14em; font-size: 12px; color: var(--pink-600); font-weight: 1000; }
+    h2 { margin: 8px 0 14px; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.05; letter-spacing: -.05em; color: var(--purple-950); }
+    .section-head p { color: var(--muted); margin: 0; font-size: 17px; }
+
+    .mission-card {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 28px;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(250,245,255,.95));
+      border: 1px solid rgba(124,58,237,.13);
+      border-radius: var(--radius-xl);
+      padding: 30px;
+      box-shadow: var(--shadow-soft);
+    }
+    .mission-card img { border-radius: 28px; box-shadow: 0 16px 42px rgba(124,58,237,.14); }
+    .pill-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .pill { display:inline-flex; align-items:center; gap:8px; background: #fff; color: var(--purple-800); border: 1px solid rgba(124,58,237,.16); padding: 9px 12px; border-radius: 999px; font-weight: 850; font-size: 13px; }
+
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .initiative-card {
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(124,58,237,.12);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: 0 12px 34px rgba(47,24,80,.08);
+      min-height: 245px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .initiative-card::after { content:""; position:absolute; width:120px; height:120px; border-radius:50%; background: rgba(236,72,153,.08); right:-48px; top:-38px; }
+    .icon { width: 52px; height: 52px; border-radius: 18px; display:grid; place-items:center; background: linear-gradient(135deg, rgba(124,58,237,.13), rgba(236,72,153,.13)); color: var(--purple-800); font-size: 24px; margin-bottom: 18px; }
+    .initiative-card h3 { margin: 0 0 10px; color: var(--purple-950); font-size: 21px; line-height: 1.2; letter-spacing: -.025em; }
+    .initiative-card p { margin: 0; color: var(--muted); }
+    .initiative-card a { margin-top: auto; padding-top: 18px; color: var(--pink-600); font-weight: 900; }
+
+    .feature-row { display:grid; grid-template-columns: repeat(2, 1fr); gap: 22px; align-items: stretch; margin-top: 28px; }
+    .feature-box { border-radius: var(--radius-xl); overflow:hidden; background:#fff; border:1px solid rgba(124,58,237,.12); box-shadow: var(--shadow-soft); }
+    .feature-box img { width:100%; height: 270px; object-fit: cover; background:#f8edff; }
+    .feature-box .body { padding: 24px; }
+    .feature-box h3 { margin: 0 0 8px; font-size: 24px; letter-spacing: -.03em; color: var(--purple-950); }
+    .feature-box p { margin: 0; color: var(--muted); }
+
+    .tracks-wrap { background: linear-gradient(135deg, #2b1450, #5b21b6 48%, #b91c74); border-radius: 42px; padding: 28px; color: #fff; box-shadow: var(--shadow); overflow:hidden; position: relative; }
+    .tracks-wrap::before { content:""; position:absolute; inset:auto -80px -120px auto; width:280px; height:280px; border-radius:50%; background: rgba(255,255,255,.12); }
+    .track-layout { display: grid; grid-template-columns: .82fr 1.18fr; gap: 28px; position: relative; }
+    .track-visual { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); border-radius: 30px; padding: 16px; align-self: stretch; display:flex; align-items:center; }
+    .track-visual img { border-radius: 24px; }
+    .track-content h2 { color:#fff; margin-top:0; }
+    .track-content p { color: rgba(255,255,255,.78); }
+    .track-tabs { display:flex; flex-wrap:wrap; gap: 10px; margin: 20px 0; }
+    .track-tab { border:1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.10); color:#fff; border-radius:999px; padding:10px 14px; cursor:pointer; font-weight:850; }
+    .track-tab.active { background:#fff; color: var(--purple-800); }
+    .track-detail { background: rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.18); border-radius: 26px; padding: 22px; min-height: 190px; }
+    .track-detail h3 { margin: 0 0 10px; font-size: 26px; }
+    .track-detail ul { margin: 12px 0 0; padding-left: 22px; color: rgba(255,255,255,.86); }
+    .track-detail li { margin: 6px 0; }
+
+    .timeline { display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .step { position: relative; background:#fff; border:1px solid rgba(124,58,237,.12); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-soft); }
+    .step-number { width: 42px; height: 42px; border-radius: 15px; background: linear-gradient(135deg, var(--purple-700), var(--pink-500)); color:#fff; display:grid; place-items:center; font-weight:1000; margin-bottom: 14px; }
+    .step h3 { margin:0 0 8px; color: var(--purple-950); font-size: 19px; }
+    .step p { margin:0; color: var(--muted); font-size: 14px; }
+
+    .impact-grid { display:grid; grid-template-columns: 1.1fr .9fr; gap: 22px; align-items: stretch; }
+    .impact-panel { background:#fff; border:1px solid rgba(124,58,237,.12); border-radius: var(--radius-xl); padding: 28px; box-shadow: var(--shadow-soft); }
+    .impact-panel h3 { margin:0 0 8px; font-size: 30px; letter-spacing:-.04em; color: var(--purple-950); }
+    .check-list { list-style:none; padding:0; margin:18px 0 0; }
+    .check-list li { display:flex; gap:12px; margin: 13px 0; color: var(--muted); }
+    .check-list li::before { content:"✓"; width:25px; height:25px; flex:0 0 25px; display:grid; place-items:center; border-radius:50%; color:#fff; background: var(--green); font-weight:900; }
+    .metrics { display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .metric { border-radius: 24px; padding: 22px; background: var(--surface-soft); border:1px solid rgba(124,58,237,.12); }
+    .metric b { display:block; font-size: 34px; color: var(--purple-900); line-height:1; }
+    .metric span { color: var(--muted); font-size: 13px; font-weight:800; }
+
+    .voices { display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .voice { background:#fff; border:1px solid rgba(124,58,237,.12); border-radius: 26px; padding: 22px; box-shadow: 0 14px 34px rgba(47,24,80,.07); }
+    .avatar { width:48px; height:48px; border-radius:17px; background: linear-gradient(135deg, rgba(124,58,237,.18), rgba(236,72,153,.2)); display:grid; place-items:center; color: var(--purple-800); font-weight:1000; margin-bottom: 14px; }
+    .voice p { color: var(--muted); margin: 0 0 18px; font-size:14px; }
+    .voice strong { display:block; color: var(--purple-950); }
+    .voice span { color: var(--pink-600); font-size: 12px; font-weight:900; }
+    .voice-note { max-width: 760px; margin: -18px auto 28px; text-align:center; color: var(--muted); font-size: 14px; }
+
+    .faq-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    details { background:#fff; border:1px solid rgba(124,58,237,.12); border-radius: 22px; padding: 18px 20px; box-shadow: 0 10px 28px rgba(47,24,80,.06); }
+    summary { cursor:pointer; font-weight:900; color: var(--purple-950); }
+    details p { color: var(--muted); margin-bottom:0; }
+
+    .contact-card {
+      display:grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
+      align-items: start;
+      background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(252,231,243,.75));
+      border:1px solid rgba(124,58,237,.12);
+      border-radius: 42px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+    .contact-info { padding: 6px; }
+    .contact-info h2 { margin-top:0; }
+    .contact-line { display:flex; gap:12px; align-items:center; color: var(--muted); margin: 14px 0; font-weight:750; }
+    .contact-line b { color: var(--purple-950); }
+    .form { background:#fff; border:1px solid rgba(124,58,237,.12); border-radius: 30px; padding: 24px; }
+    .field { margin-bottom: 14px; }
+    label { display:block; color: var(--purple-950); font-size: 13px; font-weight:900; margin-bottom: 7px; }
+    input, textarea, select { width:100%; border:1px solid rgba(124,58,237,.16); border-radius: 16px; padding: 12px 14px; background: #fffbff; color: var(--text); outline: none; }
+    input:focus, textarea:focus, select:focus { border-color: var(--purple-600); box-shadow: 0 0 0 4px rgba(124,58,237,.1); }
+    textarea { min-height: 126px; resize: vertical; }
+    .form-row { display:grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .form-message { margin-top: 12px; color: var(--green); font-weight: 850; display:none; }
+
+    footer { padding: 34px 0; background: var(--purple-950); color: rgba(255,255,255,.78); }
+    .footer-inner { display:flex; align-items:center; justify-content:space-between; gap: 18px; flex-wrap: wrap; }
+    footer .brand { color:#fff; }
+    footer .brand small { color: rgba(255,255,255,.63); }
+    .footer-links { display:flex; gap: 14px; flex-wrap: wrap; font-size: 14px; font-weight:800; }
+
+    @media (max-width: 980px) {
+      .hero-grid, .mission-card, .track-layout, .impact-grid, .contact-card { grid-template-columns: 1fr; }
+      .quick-stats, .timeline, .voices { grid-template-columns: repeat(2, 1fr); }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .links { position: absolute; left: 18px; right: 18px; top: 84px; display: none; flex-direction: column; align-items: stretch; background: #fff; border:1px solid rgba(124,58,237,.12); border-radius: 22px; padding: 16px; box-shadow: var(--shadow-soft); }
+      .links.open { display:flex; }
+      .menu-btn { display:block; }
+      .nav { position: relative; }
+      .hero { padding-top: 48px; }
+    }
+    @media (max-width: 640px) {
+      .container { width: min(100% - 24px, var(--max)); }
+      .quick-stats, .cards, .feature-row, .timeline, .metrics, .voices, .faq-grid, .form-row { grid-template-columns: 1fr; }
+      .hero-card { padding: 14px; border-radius: 30px; }
+      .logo-panel { border-radius: 24px; }
+      .floating-card { position: static; margin-top: 12px; width: 100%; }
+      .tracks-wrap, .contact-card { padding: 20px; border-radius: 30px; }
+      section { padding: 52px 0; }
+      .brand span { font-size: 14px; }
+      h1 { letter-spacing: -.06em; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Safe Zone 4 Tech Girls home">
+        <img src="assets/logo.png" alt="Safe Zone 4 Tech Girls logo" />
+        <span>Safe Zone 4 Tech Girls<small>Non-profit Arab girls in tech community</small></span>
+      </a>
+      <nav class="links" id="navLinks" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#initiatives">Initiatives</a>
+        <a href="#tracks">Tracks</a>
+        <a href="#impact">Impact</a>
+        <a href="#voices">Voices</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-primary" href="https://whatsapp.com/channel/0029VbB5uciF6smvqrSnDV3N" target="_blank" rel="noopener">Join Channel</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> Safe, supportive, volunteer-led learning space</span>
+          <h1>Helping Arab girls grow in <span class="gradient-text">technology</span>.</h1>
+          <p>Safe Zone 4 Tech Girls is a non-profit community created to support girls across Arab countries with practical tech learning, peer study groups, mentorship, CV and LinkedIn improvement, and guided course study circles.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#initiatives">Explore our work</a>
+            <a class="btn btn-light" href="mailto:alaasahlan7@gmail.com?subject=Partnership%20with%20Safe%20Zone%204%20Tech%20Girls">Contact us</a>
+            <button class="btn btn-outline" id="copyChannel" type="button">Copy WhatsApp Channel</button>
+          </div>
+          <p class="hero-note" id="copyStatus">Focused on access, confidence, and structured learning for girls who want to enter tech.</p>
+          <div class="quick-stats" aria-label="Community focus areas">
+            <div class="stat"><b>4</b><span>Dedicated tech tracks</span></div>
+            <div class="stat"><b>CV</b><span>Portfolio & resume clinics</span></div>
+            <div class="stat"><b>edX</b><span>Course study sprints</span></div>
+            <div class="stat"><b>1:1</b><span>Guidance & peer support</span></div>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Safe Zone 4 Tech Girls visual identity">
+          <div class="logo-panel"><img src="assets/logo.png" alt="Safe Zone 4 Tech Girls purple community poster" /></div>
+          <div class="floating-card">
+            <strong>Community mission</strong>
+            <span>Make technology learning less lonely, more organized, and more accessible for Arab girls.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">About us</span>
+          <h2>A community built around safety, progress, and practical support.</h2>
+          <p>We help girls move from confusion to clarity by creating a welcoming space where they can ask questions, study consistently, build career materials, and follow clear learning paths.</p>
+        </div>
+        <div class="mission-card">
+          <img src="assets/illustration-community.svg" alt="Illustration of a supportive girls in technology community" />
+          <div>
+            <span class="section-kicker">Our mission</span>
+            <h2>Support girls in the Arab world to enter and grow in tech.</h2>
+            <p>Safe Zone 4 Tech Girls is not a paid training company. It is a non-profit, community-driven space where girls can find encouragement, structured study groups, guidance, and practical career preparation.</p>
+            <div class="pill-list">
+              <span class="pill">💜 Girls-first community</span>
+              <span class="pill">🌍 Arab countries focus</span>
+              <span class="pill">🤝 Mentorship culture</span>
+              <span class="pill">📚 Self-learning support</span>
+              <span class="pill">🚀 Career readiness</span>
+              <span class="pill">🛡️ Respectful safe space</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="initiatives">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Initiatives</span>
+          <h2>Practical initiatives that help members study, present themselves, and stay consistent.</h2>
+          <p>Our activities are designed to solve real barriers: not knowing where to start, studying alone, weak CVs, unclear LinkedIn profiles, and lack of guidance.</p>
+        </div>
+        <div class="cards">
+          <article class="initiative-card">
+            <div class="icon">in</div>
+            <h3>LinkedIn Improvement Sessions</h3>
+            <p>We help members improve headlines, about sections, featured projects, profile structure, and how they present their learning journey professionally.</p>
+            <a href="#contact">Request collaboration →</a>
+          </article>
+          <article class="initiative-card">
+            <div class="icon">CV</div>
+            <h3>CV & Portfolio Clinics</h3>
+            <p>Members receive support on writing clearer CVs, highlighting projects, structuring skills, and avoiding common mistakes in beginner tech resumes.</p>
+            <a href="#contact">Support our learners →</a>
+          </article>
+          <article class="initiative-card">
+            <div class="icon">🧭</div>
+            <h3>Mentorship & Direction</h3>
+            <p>We provide guidance for choosing tracks, planning study steps, staying motivated, and understanding what to learn next based on each learner's goals.</p>
+            <a href="#tracks">See tracks →</a>
+          </article>
+          <article class="initiative-card">
+            <div class="icon">eDX</div>
+            <h3>edX Study Groups</h3>
+            <p>Members study online courses together through organized sprints, check-ins, reminders, discussions, and peer accountability until completion.</p>
+            <a href="#contact">Partner with us →</a>
+          </article>
+          <article class="initiative-card">
+            <div class="icon">⌘</div>
+            <h3>Track-Specific Groups</h3>
+            <p>Separate study groups help learners focus on Cybersecurity, Data Analysis, AI, and Machine Learning without mixing roadmaps or resources.</p>
+            <a href="#tracks">Explore tracks →</a>
+          </article>
+          <article class="initiative-card">
+            <div class="icon">✨</div>
+            <h3>Safe Peer Support</h3>
+            <p>We encourage respectful questions, beginner-friendly explanations, shared resources, and a culture that helps girls continue instead of giving up.</p>
+            <a href="#voices">Community voices →</a>
+          </article>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-box">
+            <img src="assets/illustration-linkedin-cv.svg" alt="LinkedIn and CV improvement visual" />
+            <div class="body">
+              <h3>Career profile readiness</h3>
+              <p>LinkedIn and CV activities help learners translate their study progress into stronger public profiles and clearer career stories.</p>
+            </div>
+          </div>
+          <div class="feature-box">
+            <img src="assets/illustration-edx.svg" alt="edX study sprint visual" />
+            <div class="body">
+              <h3>Structured course completion</h3>
+              <p>edX study circles make self-learning easier by adding plans, shared deadlines, discussion, and motivation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tracks">
+      <div class="container">
+        <div class="tracks-wrap">
+          <div class="track-layout">
+            <div class="track-visual"><img src="assets/illustration-tracks.svg" alt="Four separate technology tracks" /></div>
+            <div class="track-content">
+              <span class="section-kicker" style="color:#ffd6e8">Learning tracks</span>
+              <h2>Separate groups for focused study paths.</h2>
+              <p>Each track has its own space so members can follow relevant roadmaps, ask focused questions, share resources, and study with girls who have similar goals.</p>
+              <div class="track-tabs" role="tablist" aria-label="Technology tracks">
+                <button class="track-tab active" type="button" data-track="cyber">Cybersecurity</button>
+                <button class="track-tab" type="button" data-track="data">Data Analysis</button>
+                <button class="track-tab" type="button" data-track="ai">Artificial Intelligence</button>
+                <button class="track-tab" type="button" data-track="ml">Machine Learning</button>
+              </div>
+              <div class="track-detail" id="trackDetail" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">How it works</span>
+          <h2>Simple structure. Stronger consistency.</h2>
+          <p>We combine community support with organized learning steps so members know what to do next.</p>
+        </div>
+        <div class="timeline">
+          <div class="step"><div class="step-number">1</div><h3>Join the community</h3><p>Members enter a safe space where they can ask questions and find suitable tracks.</p></div>
+          <div class="step"><div class="step-number">2</div><h3>Choose a path</h3><p>Girls join focused groups such as Cybersecurity, Data Analysis, AI, or Machine Learning.</p></div>
+          <div class="step"><div class="step-number">3</div><h3>Study with structure</h3><p>Course sprints, shared resources, peer check-ins, and discussion help members stay consistent.</p></div>
+          <div class="step"><div class="step-number">4</div><h3>Prepare for opportunities</h3><p>CV, LinkedIn, mentorship, and portfolio support help learners present their progress better.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Impact focus</span>
+          <h2>We focus on the support that beginners usually need most.</h2>
+          <p>Our goal is to make tech learning more accessible and less intimidating for girls who are building their first skills.</p>
+        </div>
+        <div class="impact-grid">
+          <div class="impact-panel">
+            <h3>Why this community matters</h3>
+            <p style="color:var(--muted); margin:0;">Many beginners do not only need course links. They need direction, accountability, confidence, career material review, and a respectful environment where they can learn without fear.</p>
+            <ul class="check-list">
+              <li>Helps members choose a track instead of collecting random resources.</li>
+              <li>Improves career readiness through CV and LinkedIn support.</li>
+              <li>Encourages completion of online courses through group study sprints.</li>
+              <li>Creates a safe, girl-centered space for questions and peer learning.</li>
+            </ul>
+          </div>
+          <div class="impact-panel">
+            <div class="metrics">
+              <div class="metric"><b>4</b><span>Focused tech tracks</span></div>
+              <div class="metric"><b>6</b><span>Core support initiatives</span></div>
+              <div class="metric"><b>0</b><span>Profit-driven training model</span></div>
+              <div class="metric"><b>100%</b><span>Community-centered mission</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="voices">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Community voices</span>
+          <h2>Member journeys we are designed to support.</h2>
+          <p>These example learner journeys show the kind of outcomes our initiatives are built for across different specializations.</p>
+        </div>
+        <p class="voice-note">These stories reflect typical learning paths the community is designed to support; verified member testimonials can be added as the community collects them.</p>
+        <div class="voices">
+          <article class="voice">
+            <div class="avatar">N</div>
+            <p>“The Data Analysis group would help a beginner turn scattered resources into a clear weekly study plan and project-focused learning.”</p>
+            <strong>Nour</strong><span>Data Analysis learner journey</span>
+          </article>
+          <article class="voice">
+            <div class="avatar">S</div>
+            <p>“The CV clinic is designed to help learners present projects, skills, and certificates in a cleaner and more professional way.”</p>
+            <strong>Salma</strong><span>AI learner journey</span>
+          </article>
+          <article class="voice">
+            <div class="avatar">M</div>
+            <p>“A dedicated Cybersecurity group can make labs, fundamentals, and roadmaps easier to follow with peer support and guidance.”</p>
+            <strong>Mariam</strong><span>Cybersecurity learner journey</span>
+          </article>
+          <article class="voice">
+            <div class="avatar">Y</div>
+            <p>“edX study sprints are meant to help members continue their courses instead of stopping halfway because they are studying alone.”</p>
+            <strong>Yasmin</strong><span>Machine Learning learner journey</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">FAQ</span>
+          <h2>Quick answers for partners and reviewers.</h2>
+        </div>
+        <div class="faq-grid">
+          <details open><summary>Is Safe Zone 4 Tech Girls a non-profit community?</summary><p>Yes. It is a non-profit, community-led initiative focused on helping girls in Arab countries grow in technology through support, structure, and guidance.</p></details>
+          <details><summary>Who can benefit from the community?</summary><p>Girls and young women who want to start or improve their learning in technology, especially beginners who need direction, accountability, and a safe place to ask questions.</p></details>
+          <details><summary>What learning tracks are supported?</summary><p>The community supports dedicated study groups for Cybersecurity, Data Analysis, Artificial Intelligence, and Machine Learning.</p></details>
+          <details><summary>How can partners contact the team?</summary><p>Partners, reviewers, and learners can contact the community by email at alaasahlan7@gmail.com.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div class="contact-info">
+            <span class="section-kicker">Contact</span>
+            <h2>Support our mission or reach out for collaboration.</h2>
+            <p style="color:var(--muted);">We welcome learning resources, course access opportunities, mentorship support, partnerships, and collaboration that can help more Arab girls progress in technology.</p>
+            <div class="contact-line">📧 <b>Email:</b> <a href="mailto:alaasahlan7@gmail.com">alaasahlan7@gmail.com</a></div>
+            <div class="contact-line">🌐 <b>Region:</b> Arab countries</div>
+            <div class="contact-line">💜 <b>Type:</b> Non-profit learning community</div>
+            <div class="hero-actions" style="margin-top:20px">
+              <a class="btn btn-primary" href="mailto:alaasahlan7@gmail.com?subject=Hello%20Safe%20Zone%204%20Tech%20Girls">Email us</a>
+              <a class="btn btn-light" href="https://whatsapp.com/channel/0029VbB5uciF6smvqrSnDV3N" target="_blank" rel="noopener">Visit channel</a>
+            </div>
+          </div>
+          <form class="form" id="contactForm">
+            <div class="form-row">
+              <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" required /></div>
+              <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" required /></div>
+            </div>
+            <div class="field"><label for="topic">Topic</label><select id="topic" name="topic"><option>Partnership</option><option>Learning access</option><option>Mentorship</option><option>Community support</option><option>Other</option></select></div>
+            <div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="Write your message here..." required></textarea></div>
+            <button class="btn btn-primary" type="submit">Send message by email</button>
+            <div class="form-message" id="formMessage">Your email app should open now. If not, email us directly at alaasahlan7@gmail.com.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="brand" href="#home"><img src="assets/logo.png" alt="" /><span>Safe Zone 4 Tech Girls<small>A safe and supportive space for girls in tech</small></span></a>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#initiatives">Initiatives</a>
+        <a href="#tracks">Tracks</a>
+        <a href="mailto:alaasahlan7@gmail.com">Contact</a>
+      </div>
+      <span>© <span id="year"></span> Safe Zone 4 Tech Girls</span>
+    </div>
+  </footer>
+
+  <script>
+    const navLinks = document.getElementById('navLinks');
+    const menuBtn = document.getElementById('menuBtn');
+    menuBtn.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+
+    const tracks = {
+      cyber: {
+        title: 'Cybersecurity Study Group',
+        text: 'A focused space for members who want to understand security fundamentals, labs, basic networking, Linux, ethical hacking concepts, and safe learning roadmaps.',
+        points: ['Beginner-friendly roadmap discussions', 'Lab practice accountability', 'Security concepts explained in simple language']
+      },
+      data: {
+        title: 'Data Analysis Study Group',
+        text: 'A track for members studying spreadsheets, SQL, Python, visualization, statistics basics, dashboards, and portfolio projects.',
+        points: ['Project-based learning support', 'Python, SQL, and dashboard resources', 'Portfolio and CV project presentation']
+      },
+      ai: {
+        title: 'Artificial Intelligence Study Group',
+        text: 'A group for learners exploring AI concepts, use cases, prompt skills, responsible AI, and beginner-friendly projects.',
+        points: ['AI concepts and practical examples', 'Learning resources and discussions', 'Project idea support']
+      },
+      ml: {
+        title: 'Machine Learning Study Group',
+        text: 'A structured space for learning model basics, data preparation, evaluation metrics, supervised learning, and hands-on notebooks.',
+        points: ['Study circles for ML fundamentals', 'Notebook and dataset practice', 'Guidance for beginner ML projects']
+      }
+    };
+    const detail = document.getElementById('trackDetail');
+    const tabs = document.querySelectorAll('.track-tab');
+    function renderTrack(key) {
+      const track = tracks[key];
+      detail.innerHTML = `<h3>${track.title}</h3><p>${track.text}</p><ul>${track.points.map(point => `<li>${point}</li>`).join('')}</ul>`;
+      tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.track === key));
+    }
+    tabs.forEach(tab => tab.addEventListener('click', () => renderTrack(tab.dataset.track)));
+    renderTrack('cyber');
+
+    const copyButton = document.getElementById('copyChannel');
+    const copyStatus = document.getElementById('copyStatus');
+    copyButton.addEventListener('click', async () => {
+      const link = 'https://whatsapp.com/channel/0029VbB5uciF6smvqrSnDV3N';
+      try {
+        await navigator.clipboard.writeText(link);
+        copyStatus.textContent = 'WhatsApp channel link copied successfully.';
+      } catch (error) {
+        copyStatus.textContent = link;
+      }
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const name = encodeURIComponent(document.getElementById('name').value.trim());
+      const email = encodeURIComponent(document.getElementById('email').value.trim());
+      const topic = encodeURIComponent(document.getElementById('topic').value);
+      const message = encodeURIComponent(document.getElementById('message').value.trim());
+      const subject = `Safe Zone 4 Tech Girls - ${decodeURIComponent(topic)}`;
+      const body = `Name: ${decodeURIComponent(name)}\nEmail: ${decodeURIComponent(email)}\nTopic: ${decodeURIComponent(topic)}\n\nMessage:\n${decodeURIComponent(message)}`;
+      window.location.href = `mailto:alaasahlan7@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      document.getElementById('formMessage').style.display = 'block';
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
